@@ -1,0 +1,12 @@
+matrix:
+  include:
+    - os: linux
+      dist: trusty
+      sudo: required
+    - os: osx
+env:
+  global:
+    - DOTPATH=~/.dotfiles
+install:
+  - curl -L https://rawgit.com/furushchev/dotfiles/run.sh | bash
+

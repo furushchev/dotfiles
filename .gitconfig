@@ -1,0 +1,31 @@
+[user]
+	name = Furushchev
+	email = furushchev@jsk.imi.i.u-tokyo.ac.jp
+
+[alias]
+	co = checkout
+	ci = commit
+	st = "status -sb"
+	cl = clone
+	br = "branch -a"
+	re = "remote -v"
+	ps = push
+	pl = pull
+	l1 = "log --all --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative"
+
+[help]
+	autocorrect = 1
+
+[color]
+	ui = 1
+
+[push]
+#	default = simple
+	default = matching
+
+[http]
+	sslVerify = false
+
+[github]
+	user = furushchev
+
