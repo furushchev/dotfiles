@@ -11,7 +11,9 @@ esac
 HISTCONTROL=ignoreboth
 
 # append to the history file, don't overwrite it
-shopt -s histappend
+if shopt | grep histappend 1>/dev/null; then
+  shopt -s histappend
+fi
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 HISTTIMEFORMAT="%Y/%m/%d &H:%M:%S:   "
@@ -20,21 +22,29 @@ HISTFILESIZE=20000000
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
-shopt -s checkwinsize
+if shopt | grep checkwinsize 1>/dev/null; then
+  shopt -s checkwinsize
+fi
 
 # If set, the pattern "**" used in a pathname expansion context will
 # match all files and zero or more directories and subdirectories.
-shopt -s globstar
+if shopt | grep globstar 1>/dev/null; then
+  shopt -s globstar
+fi
 
 # If set, minor errors in the spelling of a directory component in a cd command
 # will be corrected. The errors checked for are transposed characters, a missing
 # character, and a character too many. If a correction is found, the corrected path
 # is printed, and the command proceeds. This option is only used by interactive shells.
-shopt -s cdspell
+if shopt | grep cdspell 1>/dev/null; then
+  shopt -s cdspell
+fi
 
 # If set, Bash attempts spelling correction on directory names during word
 # completion if the directory name initially supplied does not exist.
-shopt -s dirspell
+if shopt | grep dirspell 1>/dev/null; then
+  shopt -s dirspell
+fi
 
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
@@ -63,9 +73,9 @@ if [ "$(uname)" = "Darwin" ]; then
 fi
 
 if [ "$color_prompt" = yes ]; then
-  PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ ($(__git_ps1 [%s]))'
+  PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\] $(__git_ps1 [%s])\$ '
 else
-  PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ ($(__git_ps1 [%s]))'
+  PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w $(__git_ps1 [%s]\$ '
 fi
 unset color_prompt
 
@@ -132,6 +142,7 @@ if [ ! -d "$HOME/.hub" ]; then
   mv -f /tmp/${hub_dirname} ~/.hub
 fi
 [ -f ~/.hub/etc/hub.bash_completion ] && . ~/.hub/etc/hub.bash_completion
+[ -d ~/.hub/bin ] && export PATH=~/.hub/bin:$PATH
 [ -n "`which hub`" ] && $(hub alias -s)
 
 ## Here is the end of automatic initialization
