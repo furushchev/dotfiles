@@ -8,5 +8,5 @@ env:
   global:
     - DOTPATH=~/.dotfiles
 install:
-  - curl -L https://rawgit.com/furushchev/dotfiles/run.sh | bash
+  - curl -L https://rawgit.com/furushchev/dotfiles/install.sh | bash
 
