@@ -75,7 +75,7 @@ fi
 if [ "$color_prompt" = yes ]; then
   PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\] $(__git_ps1 [%s])\$ '
 else
-  PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w $(__git_ps1 [%s]\$ '
+  PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w $(__git_ps1 [%s])\$ '
 fi
 unset color_prompt
 
@@ -132,15 +132,6 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# load hub command if exists
-if [ ! -d "$HOME/.hub" ]; then
-  hub_version=2.2.9
-  _system_type=$(uname)
-  hub_dirname="hub-${_system_type,,}-amd64-${hub_version}"
-  hub_uri="https://github.com/github/hub/releases/download/v${hub_version}/${hub_dirname}.tgz"
-  curl -L -o /tmp/hub.tgz $hub_uri -C /tmp
-  mv -f /tmp/${hub_dirname} ~/.hub
-fi
 [ -f ~/.hub/etc/hub.bash_completion ] && . ~/.hub/etc/hub.bash_completion
 [ -d ~/.hub/bin ] && export PATH=~/.hub/bin:$PATH
 [ -n "`which hub`" ] && $(hub alias -s)

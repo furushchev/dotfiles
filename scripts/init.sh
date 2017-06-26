@@ -3,17 +3,21 @@
 CURRENT_DIR=$(cd $(dirname "${BASH_SOURCE[0]}"); pwd)
 
 if [ "$(uname)" = "Darwin" ]; then
-  exec $CURRENT_DIR/darwin/init.sh
-else
-  if [ -e /etc/lsb-release ]; then
-    if [ "`lsb_release -is`" != "Ubuntu" ]; then
-      echo "Only Ubuntu is supported!"
-      exit 1
-    fi
-  else
-    echo "Only debian based linux is supported!"
-    exit 1
+  DISTRO=darwin
+elif [ -e /etc/lsb-release ]; then
+  if [ "`lsb_release -is`" = "Ubuntu" ]; then
+    DISTRO=ubuntu
   fi
-
-  exec $CURRENT_DIR/ubuntu/init.sh
 fi
+
+if [ -d $CURRENT_DIR/$DISTRO ]; then
+  for i in $CURRENT_DIR/$DISTRO/*.sh; do
+    if [ -r $i ]; then
+      . $i
+    fi
+  done
+  unset i
+fi
+
+unset CURRENT_DIR
+unset DISTRO

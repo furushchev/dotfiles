@@ -20,7 +20,6 @@
 	ui = 1
 
 [push]
-#	default = simple
 	default = matching
 
 [http]
@@ -29,3 +28,5 @@
 [github]
 	user = furushchev
 
+[credential]
+	helper = "cache --timeout=7200"
