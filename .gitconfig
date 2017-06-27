@@ -30,3 +30,6 @@
 
 [credential]
 	helper = "cache --timeout=7200"
+
+[fetch]
+	prune = true
