@@ -45,7 +45,7 @@ fi
 # check repository
 if [ ! -d "$DOTPATH" ]; then
   prompt info "Repository not found. Downloading..."
-  git clone https://github.com/furushchev/dotfiles $DOTPATH
+  git clone https://github.com/furushchev/dotfiles --recursive $DOTPATH
 fi
 
 # install
