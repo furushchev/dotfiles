@@ -7,9 +7,7 @@ YELLOW     := "\033[1;33m"
 RESET      := "\033[0m"
 
 .DEFAULT_GOAL := help
-.PHONY: all list deploy update clean help
-
-all:
+.PHONY: list deploy update clean help
 
 list:
 	@$(foreach val, $(DOTFILES), ls -dF $(val);)
@@ -44,6 +42,7 @@ clean:
 	@echo $(YELLOW)'<<<< Removed symlinks'$(RESET)
 
 help:
-	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) \
+	@echo Available commands:
+	@grep -E '^[a-zA-Z_-]+:[ .]*$$' $(MAKEFILE_LIST) \
 		| sort \
 		| awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
