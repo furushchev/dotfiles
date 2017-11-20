@@ -135,5 +135,16 @@ fi
 [ -f ~/.hub/etc/hub.bash_completion ] && . ~/.hub/etc/hub.bash_completion
 [ -d ~/.hub/bin ] && export PATH=~/.hub/bin:$PATH
 [ -n "`which hub`" ] && $(hub alias -s)
+[ -d /usr/local/idea/bin ] && export PATH=/usr/local/idea/bin:$PATH
+
+# ROS
+export ROSCONSOLE_FORMAT='[${severity}] [${time}] [${node}:${logger}]: ${message}'
+[ -e ~/ros/indigo/devel/setup.bash ] && source ~/ros/indigo/devel/setup.bash
+pr1012(){
+    export ROBOT=pr2
+    export ROS_ENV_LOADER=/home/furushchev/ros/indigo/devel/env.sh
+    rossetmaster 133.11.216.201
+    rossetip
+}
 
 ## Here is the end of automatic initialization
