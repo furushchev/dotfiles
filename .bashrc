@@ -146,5 +146,11 @@ pr1012(){
     rossetmaster 133.11.216.201
     rossetip
 }
+pr1040(){
+    export ROBOT=pr2
+    export ROS_ENV_LOADER=/home/furushchev/ros/hydro/devel/env.sh
+    rossetmaster 133.11.216.211
+    rossetip
+}
 
 ## Here is the end of automatic initialization
