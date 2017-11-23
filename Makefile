@@ -31,7 +31,9 @@ update:
 	git pull --recurse-submodules origin master
 	@echo $(YELLOW)'<<<< Finished fetching latest configuration'$(RESET)
 
-install: update deploy init
+install:
+	@make init
+	@make deploy
 	@echo $(YELLOW)'Successfully Installed.'$(RESET)
 	@echo $(YELLOW)'Reopen terminal or "source ~/.bashrc"'$(RESET)
 
