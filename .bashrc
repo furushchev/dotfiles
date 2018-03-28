@@ -55,6 +55,9 @@ if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
 fi
 
 # set a fancy prompt (non-color, unless we know we "want" color)
+if [ "$(lsb_release -cs)" = "xenial" ]; then
+  export TERM=xterm-color
+fi
 case "$TERM" in
   xterm-color) color_prompt=yes;;
   xterm-256color) color_prompt=yes;;
