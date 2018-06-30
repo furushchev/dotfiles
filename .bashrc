@@ -158,3 +158,6 @@ pr1040(){
 }
 
 ## Here is the end of automatic initialization
+
+# added by travis gem
+[ -f /home/furushchev/.travis/travis.sh ] && source /home/furushchev/.travis/travis.sh
