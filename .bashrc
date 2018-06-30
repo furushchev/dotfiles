@@ -142,7 +142,8 @@ fi
 
 # ROS
 export ROSCONSOLE_FORMAT='[${severity}] [${time}] [${node}:${logger}]: ${message}'
-[ -e ~/ros/indigo/devel/setup.bash ] && source ~/ros/indigo/devel/setup.bash
+[ -e ~/ros/kinetic/devel/setup.bash ] && source ~/ros/kinetic/devel/setup.bash
+
 pr1012(){
     export ROBOT=pr2
     export ROS_ENV_LOADER=/home/furushchev/ros/indigo/devel/env.sh
