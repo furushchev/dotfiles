@@ -46,6 +46,9 @@ fi
 if [ ! -d "$DOTPATH" ]; then
   prompt info "Repository not found. Downloading..."
   git clone https://github.com/furushchev/dotfiles --recursive $DOTPATH
+else
+  prompt info "Repository found. Updating to latest..."
+  (cd $DOTPATH && git pull origin master)
 fi
 
 # install
