@@ -140,6 +140,18 @@ fi
 [ -n "`which hub`" ] && $(hub alias -s)
 [ -d /usr/local/idea/bin ] && export PATH=/usr/local/idea/bin:$PATH
 
+# conda
+export MINICONDA_PATH=/usr/local/miniconda3
+export PATH=$MINICONDA_PATH/bin:$PATH
+export LD_LIBRARY_PATH=$MINICONDA_PATH/lib:$LD_LIBRARY_PATH
+source $MINICONDA_PATH/etc/profile.d/conda.sh
+[ "which conda" != "" ] && [[ -z $TMUX ]] || conda deactivate
+
+# cuda
+export CUDA_PATH=/usr/local/cuda
+export PATH=$CUDA_PATH/bin:$PATH
+export LD_LIBRARY_PATH=$CUDA_PATH/lib64:$LD_LIBRARY_PATH
+
 # ROS
 export ROSCONSOLE_FORMAT='[${severity}] [${time}] [${node}:${logger}]: ${message}'
 [ -e ~/ros/kinetic/devel/setup.bash ] && source ~/ros/kinetic/devel/setup.bash
