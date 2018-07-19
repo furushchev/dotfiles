@@ -152,6 +152,11 @@ export CUDA_PATH=/usr/local/cuda
 export PATH=$CUDA_PATH/bin:$PATH
 export LD_LIBRARY_PATH=$CUDA_PATH/lib64:$LD_LIBRARY_PATH
 
+# openmpi
+export OPENMPI_PATH=/usr/local/openmpi
+export PATH=$OPENMPI_PATH/bin:$PATH
+export LD_LIBRARY_PATH=$OPENMPI_PATH/lib:$LD_LIBRARY_PATH
+
 # ROS
 export ROSCONSOLE_FORMAT='[${severity}] [${time}] [${node}:${logger}]: ${message}'
 [ -e ~/ros/kinetic/devel/setup.bash ] && source ~/ros/kinetic/devel/setup.bash
