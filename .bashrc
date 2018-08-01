@@ -111,10 +111,11 @@ fi
 # some more ls aliases
 alias ll='ls -alF'
 alias la='ls -A'
-alias l='ls -CF'
+alias l='ls -alhF'
 alias cp='cp -i'
 alias mv='mv -i'
 alias rm='rm -i'
+alias open='xdg-open'
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
