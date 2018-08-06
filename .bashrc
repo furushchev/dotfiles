@@ -142,21 +142,27 @@ fi
 [ -d /usr/local/idea/bin ] && export PATH=/usr/local/idea/bin:$PATH
 
 # conda
-export MINICONDA_PATH=/usr/local/miniconda3
-export PATH=$MINICONDA_PATH/bin:$PATH
-export LD_LIBRARY_PATH=$MINICONDA_PATH/lib:$LD_LIBRARY_PATH
-source $MINICONDA_PATH/etc/profile.d/conda.sh
-[ "which conda" != "" ] && [[ -z $TMUX ]] || conda deactivate
+if [ -d /usr/local/miniconda3 ]; then
+  export MINICONDA_PATH=/usr/local/miniconda3
+  export PATH=$MINICONDA_PATH/bin:$PATH
+  export LD_LIBRARY_PATH=$MINICONDA_PATH/lib:$LD_LIBRARY_PATH
+  source $MINICONDA_PATH/etc/profile.d/conda.sh
+  conda deactivate
+fi
 
 # cuda
-export CUDA_PATH=/usr/local/cuda
-export PATH=$CUDA_PATH/bin:$PATH
-export LD_LIBRARY_PATH=$CUDA_PATH/lib64:$LD_LIBRARY_PATH
+if [ -d /usr/local/cuda ]; then
+  export CUDA_PATH=/usr/local/cuda
+  export PATH=$CUDA_PATH/bin:$PATH
+  export LD_LIBRARY_PATH=$CUDA_PATH/lib64:$LD_LIBRARY_PATH
+fi
 
 # openmpi
-export OPENMPI_PATH=/usr/local/openmpi
-export PATH=$OPENMPI_PATH/bin:$PATH
-export LD_LIBRARY_PATH=$OPENMPI_PATH/lib:$LD_LIBRARY_PATH
+if [ -d /usr/local/openmpi ]; then
+  export OPENMPI_PATH=/usr/local/openmpi
+  export PATH=$OPENMPI_PATH/bin:$PATH
+  export LD_LIBRARY_PATH=$OPENMPI_PATH/lib:$LD_LIBRARY_PATH
+fi
 
 # ROS
 export ROSCONSOLE_FORMAT='[${severity}] [${time}] [${node}:${logger}]: ${message}'
