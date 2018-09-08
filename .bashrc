@@ -178,7 +178,7 @@ pr1012(){
 }
 pr1040(){
     export ROBOT=pr2
-    export ROS_ENV_LOADER=/home/furushchev/ros/hydro/devel/env.sh
+    export ROS_ENV_LOADER=/home/furushchev/ros/indigo/devel/env.sh
     rossetmaster 133.11.216.211
     rossetip
 }
