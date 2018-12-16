@@ -183,6 +183,10 @@ pr1040(){
     rossetip
 }
 
+eusgrep() {
+  ag $@ $(locate --basename --existing --regexp '\.l$' | grep ros)
+} 
+
 ## Here is the end of automatic initialization
 
 # added by travis gem
