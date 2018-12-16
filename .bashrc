@@ -143,11 +143,13 @@ fi
 
 # conda
 if [ -d /usr/local/miniconda3 ]; then
-  export MINICONDA_PATH=/usr/local/miniconda3
-  export PATH=$MINICONDA_PATH/bin:$PATH
-  export LD_LIBRARY_PATH=$MINICONDA_PATH/lib:$LD_LIBRARY_PATH
-  source $MINICONDA_PATH/etc/profile.d/conda.sh
-  conda deactivate
+  function conda_init(){
+    export MINICONDA_PATH=/usr/local/miniconda3
+    export PATH=$MINICONDA_PATH/bin:$PATH
+    export LD_LIBRARY_PATH=$MINICONDA_PATH/lib:$LD_LIBRARY_PATH
+    source $MINICONDA_PATH/etc/profile.d/conda.sh
+    conda deactivate
+  }
 fi
 
 # cuda
