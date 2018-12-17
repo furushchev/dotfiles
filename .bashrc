@@ -55,9 +55,9 @@ if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
 fi
 
 # set a fancy prompt (non-color, unless we know we "want" color)
-if [ "$(lsb_release -cs)" = "xenial" ]; then
-  export TERM=xterm-color
-fi
+# if [ "$(lsb_release -cs)" = "xenial" ]; then
+#   export TERM=xterm-color
+# fi
 case "$TERM" in
   xterm-color) color_prompt=yes;;
   xterm-256color) color_prompt=yes;;
@@ -143,7 +143,7 @@ fi
 
 # conda
 if [ -d /usr/local/miniconda3 ]; then
-  function conda_init(){
+  function conda_enable(){
     export MINICONDA_PATH=/usr/local/miniconda3
     export PATH=$MINICONDA_PATH/bin:$PATH
     export LD_LIBRARY_PATH=$MINICONDA_PATH/lib:$LD_LIBRARY_PATH
@@ -178,14 +178,19 @@ pr1012(){
 }
 pr1040(){
     export ROBOT=pr2
-    export ROS_ENV_LOADER=/home/furushchev/ros/hydro/devel/env.sh
+    export ROS_ENV_LOADER=/home/furushchev/ros/indigo/devel/env.sh
     rossetmaster 133.11.216.211
     rossetip
 }
 
+fetch15() {
+  rossetmaster 133.11.216.217
+  rossetip
+}
+
 eusgrep() {
   ag $@ $(locate --basename --existing --regexp '\.l$' | grep ros)
-} 
+}
 
 ## Here is the end of automatic initialization
 
